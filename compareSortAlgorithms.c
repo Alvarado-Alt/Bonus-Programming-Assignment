@@ -52,7 +52,7 @@ void heapSort(int pData[], int n)
             pData[i] = pData[largest];
             pData[largest] = temp;
 
-			// Recursive
+            // Recursive
             i = largest;
         }
     }
@@ -85,9 +85,6 @@ void heapSort(int pData[], int n)
 
                 // Recursive
                 j = largest;
-
-				// Additional memory allocation
-    			extraMemoryAllocated += sizeof(int);
             }
         }
     }
@@ -109,8 +106,8 @@ void mergeSort(int pData[], int l, int r)
         int n2 = r - m;
 
         // Create temp arrays
-        int* L = (int *)malloc(sizeof(int) * n1);
-        int* R = (int *)malloc(sizeof(int) * n2);
+        int* L = (int *)Alloc(sizeof(int) * n1);
+        int* R = (int *)Alloc(sizeof(int) * n2);
 
         // Copy data to temp arrays
         for (int i = 0; i < n1; i++)
@@ -146,11 +143,8 @@ void mergeSort(int pData[], int l, int r)
         }
 
         // Free temp arrays
-        free(L);
-        free(R);
-
-		// Additional memory allocation
-        extraMemoryAllocated += sizeof(int) * (n1 + n2);
+        DeAlloc(L);
+        DeAlloc(R);
     }
 }
 
@@ -171,9 +165,6 @@ void insertionSort(int* pData, int n)
         }
         pData[j + 1] = key;
     }
-
-    // Additional memory allocation
-    extraMemoryAllocated += sizeof(int) * 2;
 }
 
 // implement bubble sort
@@ -194,9 +185,6 @@ void bubbleSort(int* pData, int n)
             }
         }
     }
-
-    // Additional memory allocation
-    extraMemoryAllocated += sizeof(int);
 }
 
 // implement selection sort
@@ -218,9 +206,6 @@ void selectionSort(int* pData, int n)
         pData[i] = pData[minIndex];
         pData[minIndex] = temp;
     }
-
-    // Additional memory allocation
-    extraMemoryAllocated += sizeof(int) * 3;
 }
 
 // parses input file to an integer array
